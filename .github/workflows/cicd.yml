@@ -2,7 +2,7 @@ name: CICD Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "first" ]
 
 jobs:
   compile:
@@ -32,8 +32,7 @@ jobs:
         echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
         sudo apt-get update -y
         sudo apt-get install -y trivy
- 
-        
+
     - name: Trivy Fs Scan
       run: trivy fs --format table -o fs-report.json .
 
@@ -48,7 +47,6 @@ jobs:
     runs-on: self-hosted
     needs: security-check
    
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -59,7 +57,6 @@ jobs:
         cache: maven
     - name: Unit Test cases
       run: mvn test
-   
 
   build_project_sonar_scan:
     runs-on: self-hosted
@@ -103,7 +100,7 @@ jobs:
         SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }} 
 
 
-  build_pdocker_image_and_push:
+  build_docker_image_and_push:
     runs-on: self-hosted
     needs: build_project_sonar_scan
    
@@ -130,3 +127,4 @@ jobs:
           push: true
           tags: 4d13/bankapp:latest
   
+
