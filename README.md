@@ -2,7 +2,7 @@
 
 This project demonstrates a **complete Continuous Integration and Continuous Delivery (CI/CD) pipeline** using **GitHub Actions**. It automates the end-to-end process of **building, testing, analyzing, containerizing**, and **deploying a Java application** to a **Kubernetes cluster on AWS EKS**.
 
-> 📺 Inspired by the [DevOps Shack - GitHub Actions CI/CD Tutorial](https://www.youtube.com/watch?v=icZUzgtz_d8)
+> 📺 Inspired by the [DevOps Shack](https://www.youtube.com/watch?v=icZUzgtz_d8)
 
 ---
 
